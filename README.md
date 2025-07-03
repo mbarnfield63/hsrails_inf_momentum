@@ -1,5 +1,8 @@
 # hsrails
 ### High Speed Rails - With Infinite Momentum
+
+A fork of the [HSRails](https://dev.bukkit.org/projects/hsrails) plugin that makes minecarts worth building.
+
 **This plugin keeps the original "bug" of infinite momentum minecarts after hitting max speed.**
 
 Fork of the [HSRails](https://dev.bukkit.org/projects/hsrails) plugin that makes minecarts worth building.
