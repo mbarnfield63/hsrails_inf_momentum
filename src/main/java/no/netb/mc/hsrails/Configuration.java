@@ -101,7 +101,7 @@ public class Configuration {
 
         if (speedMultiplier > 4) {
             logger.info("Note: speed multiplier is set above 4. Typically, due to server limitations you may not see an increase in speed greater than 4x,"
-                    + " however the carts will have more momentum. This means they will coast for longer even though the max speed is seemingly 4x.");
+                    + " however the carts will have more momentum. This means they will coast infinitely even though the max speed is seemingly 4x.");
         }
         this.speedMultiplier = speedMultiplier;
     }

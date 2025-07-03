@@ -6,12 +6,25 @@
 
     <groupId>no.netb.mc.hsrails</groupId>
     <artifactId>hsrails</artifactId>
-    <version>1.5.0</version>
+    <version>1.5.1</version>
 
     <properties>
         <maven.compiler.release>11</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.10.1</version> <!-- Or latest stable -->
+                <configuration>
+                    <release>11</release>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <repositories>
         <repository>

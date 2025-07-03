@@ -87,51 +87,14 @@ public class MinecartListener implements Listener {
                             log(false, "minecart [%d] max speed refreshed", entityId);
                         }
                     }
-                } else {
-                    // carts should NOT be in high speed state when passing over regular power rails; clear it.
-                    if (cart.getMaxSpeed() != defaultSpeed) {
-                        boostedMinecarts.remove(entityId);
-                        cart.setMaxSpeed(defaultSpeed);
-                        log(false, "minecart [%d] evicted", entityId);
-                    }
                 }
-
+                
                 RedstoneRail railBlockData = (RedstoneRail) rail.getBlockData();
                 if (!railBlockData.isPowered()
                         && blockBelow.getType() == hardBrakeBlock) {
                     Vector cartVelocity = cart.getVelocity();
                     cartVelocity.multiply(HsRails.getConfiguration().getHardBrakeMultiplier());
                     cart.setVelocity(cartVelocity);
-                }
-            }
-            // This handles the infinite momentum bug as reported by GitHub issue #6.
-            // TODO: in the future, if the new minecart physics gets accepted, then this fix will no longer be needed. Maybe optionally execute this for compatibility.
-            else if (isEnteredNewBlock) {
-                MinecartState state = boostedMinecarts.get(entityId);
-                switch (rail.getType()) {
-                    case RAIL:
-                    case ACTIVATOR_RAIL:
-                    case DETECTOR_RAIL:
-                        if (state != null) { // state != null means the cart is in the high speed state.
-                            if (cart.getVelocity().length() < defaultSpeed) {
-                                cart.setMaxSpeed(defaultSpeed);
-                                boostedMinecarts.remove(entityId);
-                                log(false, "momentum: too slow, clearing boost state");
-                                break;
-                            }
-                            state.blocksCoasted++;
-                            if (state.blocksCoasted > HsRails.coastFactor) {
-                                double factor = Math.max(1d, speedMultiplier - ((state.blocksCoasted - HsRails.coastFactor) / HsRails.coastFactor));
-                                cart.setMaxSpeed(defaultSpeed * factor);
-                                if (factor == 1) {
-                                    boostedMinecarts.remove(entityId);
-                                    log(false, "momentum: factor reached 1, clearing boost state");
-                                    break;
-                                }
-                                log(false, "momentum: adjusting speed factor: %f", factor);
-                            }
-                        }
-                        break;
                 }
             }
         }

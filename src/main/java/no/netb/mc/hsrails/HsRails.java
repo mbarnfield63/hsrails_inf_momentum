@@ -93,8 +93,8 @@ public class HsRails extends JavaPlugin {
                 String message = ChatColor.AQUA + "Speed multiplier set to: " + speedMultiplier;
                 String headsUp =
                         ChatColor.YELLOW + "\nNote: multiplier set to more than 4x. Servers often struggle to provide max speeds above 4x,"
-                        + " and the carts may appear to be capped at 4x. However, carts will still have their momentum increased,"
-                        + " meaning they will coast for longer.";
+                        + " and the carts may appear to be capped at 4x. However, carts will have infinite momentum,"
+                        + " meaning they will coast forever unless slowed by hard brake blocks.";
 
                 boolean sendHeadsUp = !receivedHeadsUp.contains(sender) && speedMultiplier > 4;
                 sender.sendMessage(String.format("%s%s", message, sendHeadsUp ? headsUp : ""));
