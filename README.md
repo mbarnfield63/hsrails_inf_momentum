@@ -1,8 +1,8 @@
 # hsrails
 ### High Speed Rails - With Infinite Momentum
-
-A fork of the [HSRails](https://dev.bukkit.org/projects/hsrails) plugin that makes minecarts worth building.
 **This plugin keeps the original "bug" of infinite momentum minecarts after hitting max speed.**
+
+Fork of the [HSRails](https://dev.bukkit.org/projects/hsrails) plugin that makes minecarts worth building.
 
 For Minecraft version **1.21.5** and tested working on **1.14, 1.15, 1.16.3, 1.19, 1.21.1**. Will most likely work just fine on **newer versions as well**.
 
@@ -10,7 +10,10 @@ Place a powered rail on a _boost block_ (`redstone block` by default) to build h
 
 ![scrot](https://github.com/ergor/hsrails/blob/master/img/scrot.png)
 
-High-speed rails are by default 4x faster than regular powered rails, ie. 32 m/s, or 115 km/h. This is as fast as rocket powered elytra flight.
+High-speed rails are by default *8x* faster than regular powered rails in this version,
+ie. 32 m/s, or 115 km/h. This is as fast as rocket powered elytra flight.
+
+(The default is 8x, due to forcing infinite momentum in this version)
 
 The high-speed rail multiplier can be temporarily changed with the `/hsrails` command, or permanently changed in the config. 
 The boost block is also configurable. See _Usage_ section for commands and config options.
@@ -98,7 +101,8 @@ To compile, simply run `mvn package`
 
 
 ### Credits
-Adapted from [varesa's Minecart Speedplus](https://github.com/varesa/Minecart_speedplus).
+- Forked from [hsrails](https://dev.bukkit.org/projects/hsrails)
+- Which itself is adapted from [varesa's Minecart Speedplus](https://github.com/varesa/Minecart_speedplus).
 
 Thanks to:
 - LordNinka for discovering the effects of speed vs. momentum at high multipliers.
