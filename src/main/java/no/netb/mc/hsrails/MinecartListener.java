@@ -87,6 +87,24 @@ public class MinecartListener implements Listener {
                             log(false, "minecart [%d] max speed refreshed", entityId);
                         }
                     }
+                } else {
+                    // If the minecart was previously boosted but now is on a normal powered rail without boost block
+                    if (boostedMinecarts.containsKey(entityId)) {
+                        boostedMinecarts.remove(entityId);
+                        cart.setMaxSpeed(defaultSpeed);
+                        
+                        // Reset velocity to default speed, in the direction of current movement normalized
+                        Vector velocity = cart.getVelocity();
+                        if (velocity.lengthSquared() > 0) {
+                            Vector normalized = velocity.normalize();
+                            cart.setVelocity(normalized.multiply(defaultSpeed));
+                        } else {
+                            // If velocity is zero, give it a default forward direction (optional)
+                            cart.setVelocity(new Vector(defaultSpeed, 0, 0)); // Adjust direction if needed
+                        }
+
+                        log(false, "minecart [%d] speed and velocity reset on normal powered rail", entityId);
+                    }
                 }
                 
                 RedstoneRail railBlockData = (RedstoneRail) rail.getBlockData();
